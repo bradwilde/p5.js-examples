@@ -1,0 +1,41 @@
+// declare the runOnce variable outside of any function
+var runOnce = true;
+
+function setup() {
+  // create the canvas with a background of 400 x 400 pixels
+  createCanvas(400, 400);
+  background("#E7E5E5");
+}
+
+function draw() {
+  // check the boolean value to see if the code should be executed
+  if (!runOnce) return;
+
+  // calculate the starting position for the square of squares
+  var squareSize = 30;
+
+  // assign a unique color to each square
+  for (var y = 0; y < 8; y++) {
+    for (var x = 0; x < 8; x++) {
+      // calculate a random position for the square
+      var posX = random(width - squareSize);
+      var posY = random(height - squareSize);
+      // make sure the position values are not less than 0
+      posX = posX < 0 ? 0 : posX;
+      posY = posY < 0 ? 0 : posY;
+
+      // calculate a color value based on the sum of the x and y coordinates
+      var colorValue = (x + y) % 2;
+      if (colorValue == 0) {
+        fill("#465add");
+      } else {
+        fill("#ff2d7d");
+      }
+      noStroke();
+      rect(posX, posY, squareSize, squareSize);
+    }
+  }
+
+  // set the boolean to false to prevent the code from being executed again
+  runOnce = false;
+}
