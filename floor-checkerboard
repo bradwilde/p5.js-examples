@@ -1,0 +1,27 @@
+function setup() {
+  // create the canvas with a background of 400 x 500 pixels
+  createCanvas(400, 400);
+  background("#E7E5E5");
+}
+
+function draw() {
+  // calculate the starting position for the square of squares
+  var squareSize = 30;
+  var startX = (width - squareSize * 8) / 2;
+  var startY = (height - squareSize * 8) / 2;
+
+  // assign a unique color to each square
+  for (var y = 0; y < 8; y++) {
+    for (var x = 0; x < 8; x++) {
+      // calculate a color value based on the sum of the x and y coordinates
+      var colorValue = (x + y) % 2;
+      if (colorValue == 0) {
+        fill("#465add");
+      } else {
+        fill("#ff2d7d");
+      }
+      noStroke();
+      rect(startX + x * squareSize, startY + y * squareSize, squareSize, squareSize);
+    }
+  }
+}
